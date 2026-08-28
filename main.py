@@ -15,14 +15,14 @@ try:
     with open(file_path, "r") as file:
         content = csv.reader(file)
         row = list(content)
-        recipient = (row[1][3])
+        recipient_name = (row[1][3])
         recipient_email = (row[1][1])
 
         msg = EmailMessage()
         msg["Subject"] = "Lets Gooo!"
         msg["From"] = emailAddress
         msg["To"] = recipient_email
-        msg.set_content(f"Hi there {recipient}")
+        msg.set_content(f"Hi there {recipient_name}")
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
      
