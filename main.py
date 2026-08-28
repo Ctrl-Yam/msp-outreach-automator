@@ -1,5 +1,7 @@
 import os
 import csv
+import time
+import random
 import smtplib
 from dotenv import load_dotenv
 from email.message import EmailMessage
@@ -16,17 +18,16 @@ try:
         content = csv.reader(file)
         rows = list(content)
 
+    with open("resume.pdf", "rb") as f:
+     resume_data = f.read()
+     resume_name = f.name
+
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
          smtp.login(emailAddress, emailPass)
 
          for row in rows[1:]:
             recipient_name = row[3]
             recipient_email = row[1]
-            print(f"emails was sent to {recipient_name}")
-
-            with open("resume.pdf", "rb") as f:
-                 resume_data = f.read()
-                 resume_name = f.name
 
             msg = EmailMessage()
             msg["Subject"] = "Lets Gooo!"
@@ -42,6 +43,10 @@ try:
                 )
 
             smtp.send_message(msg)
+            print(f"emails was sent to {recipient_name}")
+            delay_time = int(random.uniform(5, 10))
+            print(f"waiting {delay_time} seconds before sending the next email...")
+            time.sleep(delay_time)
 
 except FileNotFoundError:
     print("The file was not found!")
