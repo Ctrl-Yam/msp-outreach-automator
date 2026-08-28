@@ -4,3 +4,4 @@ venv/
 .env
 *.csv
 !test.csv
+*.pdf
