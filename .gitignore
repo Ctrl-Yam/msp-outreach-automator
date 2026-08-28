@@ -2,6 +2,6 @@ __pycache__/
 .venv/
 venv/
 .env
-*.csv
+targets.csv
 !test.csv
 *.pdf
