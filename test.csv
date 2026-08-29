@@ -1,6 +1,6 @@
-COMPANY,EMAIL,JOB,EMPLOY
-B3IT,3it@info,Network,LEBU
-Datra,dattra@info,ITsupportDAVID
-Webvom,veom@info,Network,MIKE
-Office45,off@info,ITsupport,LEE
-Blitzt,Blitzt@info,Network,MANDEZ
+COMPANY,EMAIL,JOB,EMPLOY,Resume_type
+B3IT,destinationemail@gmail.com,Network,LEBU,N
+Datra,destinationemail@gmail.com,ITsupport,DAVID,N
+Webvom,destinationemail@gmail.com,Network,MIKE,S
+Office45,destinationemail@gmail.com,ITsupport,LEE,S
+Blitzt,destinationemail@gmail.com,Network,MANDEZ,N
