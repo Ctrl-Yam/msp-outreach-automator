@@ -76,7 +76,6 @@ try:
             print(f"waiting {delay_time} seconds before sending the next email...")
             time.sleep(delay_time)
 
-
 except FileNotFoundError:
        print("The file was not found!")
 
