@@ -19,6 +19,7 @@ Unlike standard mail-merge software, this engine pre-loads all binary attachment
 * **Dynamic Template & Attachment Routing:** Reads recipient metadata from a CSV and automatically pairs target roles (`N` vs `S`) with custom subjects, bodies, and matching attachments.
 * **Header Line Subject Extraction:** Automatically parses Line 1 of template files as the email subject line while dynamically formatting the remaining text as the body.
 * **Anti-Spam Delay Pacing:** Implements a randomized delay (5–10 seconds) between outgoing dispatches to simulate human typing/sending patterns and reduce spam triggers.
+* **Interactive CLI Progress:** Uses `rich` to show a live sent/total progress bar, a countdown during delays, and a summary table (Sent / Failed / Total) at the end.
 * **Deterministic Fallback:** Defaults unclassified or malformed recipient data to standard fallback configurations to prevent mid-batch execution crashes.
 
 ---
@@ -41,9 +42,8 @@ Unlike standard mail-merge software, this engine pre-loads all binary attachment
 ```
 
 2. **Install required dependencies:**
-This project relies on `python-dotenv` to securely manage credentials:
 ```bash
-pip install python-dotenv
+pip install -r requirements.txt
 
 ```
 
@@ -78,7 +78,7 @@ Place your PDF files in the root folder. By default, the script looks for two sp
 * `N_resume.pdf` (Attachment for Category N targets)
 * `S_resume.pdf` (Attachment for Category S targets)
 
-> **Note:** If your PDF files have different names (e.g., `John_Doe_CV.pdf`), you can either rename your PDF files to match `N_resume.pdf` / `S_resume.pdf`, or open `main.py` and update lines 29 & 33 to point to your exact file names:
+> **Note:** If your PDF files have different names (e.g., `John_Doe_CV.pdf`), you can either rename your PDF files to match `N_resume.pdf` / `S_resume.pdf`, or open `main.py` and update the `N_resume.pdf` / `S_resume.pdf` paths:
 > ```python
 > with open("YOUR_FILENAME_HERE.pdf", "rb") as f:
 > 
@@ -123,7 +123,16 @@ python main.py
 
 ```
 
-The script will log progress directly to the console, showing outgoing email delivery and randomized delay intervals between messages.
+To preview progress, delay countdowns, and the summary table without sending mail:
+
+```bash
+python main.py --dry-run
+
+```
+
+Dry-run still needs the usual templates, `targets.csv`, and PDF attachments; it only skips SMTP login and sending.
+
+The script shows a live progress bar, a countdown during the 5–10 second delay between messages (skipped after the last recipient), and a Sent / Failed / Total summary table when the batch finishes.
 
 ---
 
@@ -132,7 +141,7 @@ The script will log progress directly to the console, showing outgoing email del
 This V1 release represents the core CLI automation backend. Planned updates for V2.0 include:
 
 * [ ] **PyQt Desktop Interface:** A full GUI wrapper built around `QThread` for non-technical users.
-* [ ] **Terminal Dashboard:** Interactive progress bars using `rich`.
+* [x] **Terminal Dashboard:** Interactive progress bars using `rich`.
 * [ ] **Dynamic CSV Mapping:** Configurable GUI dropdowns to map custom CSV column headers.
 
 ---

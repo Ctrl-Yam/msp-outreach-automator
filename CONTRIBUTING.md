@@ -5,7 +5,7 @@ Thank you for considering contributing to this project!
 ## How to Contribute
 1. Fork the repository.
 2. Create a new feature branch (`git checkout -b feature/gui-interface`).
-3. Set up `.env.example` and test your changes locally using mock/test data.
+3. Set up `.env.example` and test your changes locally using mock/test data (`python main.py --dry-run` after copying `test.csv` to `targets.csv`).
 4. Submit a Pull Request with a clear description of your implementation.
 
 ## V2 Priority Roadmap
