@@ -17,10 +17,10 @@ recipients_file_path = "targets.csv"
 
 try:
     with open(N_message_file_path, "r") as N_message:
-         N_text = N_message.read()
+         N_text =N_message.readlines()
 
     with open(S_message_file_path, "r") as S_message:
-         S_text = S_message.read()
+         S_text = S_message.readlines()
 
     with open(recipients_file_path, "r") as file:
         content = csv.reader(file)
@@ -43,22 +43,25 @@ try:
             position_type = row[4].strip().upper()
 
             if position_type == "N":
-               text = N_text
+               subject = N_text[0].strip()
+               text = "".join(N_text[2:])
                resume_data = N_resume_data
                resume_name = N_resume_name
 
             elif position_type == "S":
-                 text = S_text
+                 subject = S_text[0].strip()
+                 text = "".join(S_text[2:])
                  resume_data = S_resume_data
                  resume_name = S_resume_name
 
             else:
-                 text = N_text
+                 subject = N_text[0].strip()
+                 text = "".join(N_text[2:])
                  resume_data = N_resume_data
                  resume_name = N_resume_name
                               
             msg = EmailMessage()
-            msg["Subject"] = "Lets Gooo!"
+            msg["Subject"] = subject
             msg["From"] = emailAddress
             msg["To"] = recipient_email
             msg.set_content(f"Hi {recipient_name}\n{text}")
