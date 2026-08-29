@@ -1,4 +1,3 @@
-Copy and paste this markdown directly into your `README.md` file:
 
 ```markdown
 # Dynamic Role-Based Email Automation Engine (CLI V1.0)
@@ -7,6 +6,11 @@ A high-performance, memory-optimized Python CLI tool designed for automated, rol
 
 Unlike standard mail-merge software, this engine pre-loads all binary attachments and message templates into RAM before executing, eliminating disk I/O bottlenecks during sending. It features dynamic template parsing, custom PDF routing based on recipient classification, and randomized dispatch pacing to protect domain reputation.
 
+## 👤 Author
+
+**Yamkelo Vilakazi**
+* GitHub: [@Ctrl-Yam](https://github.com/Ctrl-Yam)
+* Portfolio: [ctrl-yam.github.io](https://ctrl-yam.github.io)
 ---
 
 ## Key Features
