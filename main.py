@@ -11,10 +11,15 @@ load_dotenv()
 emailAddress = os.environ.get("GMAIL_USER")
 emailPass = os.environ.get("GMAIL_PASSWORD")
 
-file_path = "targets.csv"
+message_file_path = "message.txt"
+recipients_file_path = "targets.csv"
 
 try:
-    with open(file_path, "r") as file:
+    with open(message_file_path, "r") as message:
+         text = message.read()
+         print(text)
+
+    with open(recipients_file_path, "r") as file:
         content = csv.reader(file)
         rows = list(content)
 
@@ -33,7 +38,7 @@ try:
             msg["Subject"] = "Lets Gooo!"
             msg["From"] = emailAddress
             msg["To"] = recipient_email
-            msg.set_content(f"Hi there {recipient_name}")
+            msg.set_content(f"Hi {recipient_name}\n{text}")
 
             msg.add_attachment(
                 resume_data, 
@@ -48,8 +53,9 @@ try:
             print(f"waiting {delay_time} seconds before sending the next email...")
             time.sleep(delay_time)
 
+
 except FileNotFoundError:
-    print("The file was not found!")
+       print("The file was not found!")
 
 
 

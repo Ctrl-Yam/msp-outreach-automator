@@ -5,3 +5,4 @@ venv/
 targets.csv
 !test.csv
 *.pdf
+.message.txt
