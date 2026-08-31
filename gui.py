@@ -11,10 +11,10 @@ root.title("MSP Outreach Automator v2")
 root.geometry("420x360")
 
 csv_file = ctk.StringVar(value="test.csv")
-nmessage_file_path = ctk.StringVar(value="nmessage.txt")
-smessage_file_path = ctk.StringVar(value="smessage.txt")
-nresume_file_path = ctk.StringVar(value="nresume.pdf")
-sresume_file_path = ctk.StringVar(value="sresume.pdf")
+nmessage_file_path = ctk.StringVar(value="N_message.txt")
+smessage_file_path = ctk.StringVar(value="S_message.txt")
+nresume_file_path = ctk.StringVar(value="N_resume.pdf")
+sresume_file_path = ctk.StringVar(value="S_resume.pdf")
 
 # File Selectors
 def select_csv_file():

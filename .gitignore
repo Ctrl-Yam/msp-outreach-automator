@@ -4,4 +4,3 @@ venv/
 .env
 targets.csv
 !test.csv
-*.pdf
