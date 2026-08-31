@@ -68,25 +68,30 @@ def print_summary(total, sent, failed):
     console.print(table)
 
 
-def main():
-    args = parse_args()
-
+def run_outreach(
+    n_msg_path,
+    s_msg_path,
+    recipients_path,
+    n_resume_path,
+    s_resume_path,
+    dry_run=False,
+):
     try:
-        with open(N_message_file_path, "r") as N_message:
+        with open(n_msg_path, "r") as N_message:
             N_text = N_message.readlines()
 
-        with open(S_message_file_path, "r") as S_message:
+        with open(s_msg_path, "r") as S_message:
             S_text = S_message.readlines()
 
-        with open(recipients_file_path, "r") as file:
+        with open(recipients_path, "r") as file:
             content = csv.reader(file)
             rows = list(content)
 
-        with open("N_resume.pdf", "rb") as f:
+        with open(n_resume_path, "rb") as f:
             N_resume_data = f.read()
             N_resume_name = f.name
 
-        with open("S_resume.pdf", "rb") as f:
+        with open(s_resume_path, "rb") as f:
             S_resume_data = f.read()
             S_resume_name = f.name
 
@@ -95,7 +100,7 @@ def main():
         sent = 0
         failed = 0
 
-        if args.dry_run:
+        if dry_run:
             console.print("[yellow]Dry-run mode — no emails will be sent.[/]")
             smtp = None
         else:
@@ -140,15 +145,15 @@ def main():
                             resume_data,
                             maintype="application",
                             subtype="pdf",
-                            filename=resume_name,
+                            filename= "Resume",
                         )
 
                         if smtp is not None:
                             smtp.send_message(msg)
 
                         sent += 1
-                        label = "Dry-run" if args.dry_run else "Sent"
-                        color = "yellow" if args.dry_run else "green"
+                        label = "Dry-run" if dry_run else "Sent"
+                        color = "yellow" if dry_run else "green"
                         progress.console.print(
                             f"[{color}]{label}[/] to {recipient_name} <{recipient_email}>"
                         )
@@ -170,6 +175,19 @@ def main():
 
     except FileNotFoundError:
         console.print("[red]The file was not found![/]")
+
+
+def main():
+    args = parse_args()
+
+    run_outreach(
+        n_msg_path=N_message_file_path,
+        s_msg_path=S_message_file_path,
+        recipients_path=recipients_file_path,
+        n_resume_path="N_resume.pdf",
+        s_resume_path="S_resume.pdf",
+        dry_run=args.dry_run,
+    )
 
 
 if __name__ == "__main__":
