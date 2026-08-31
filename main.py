@@ -165,7 +165,7 @@ def run_outreach(
                     progress.advance(send_task)
 
                     if index < total - 1:
-                        delay_time = int(random.uniform(5, 10))
+                        delay_time = int(random.uniform(1, 2))
                         wait_with_countdown(progress, delay_task, delay_time)
         finally:
             if smtp is not None:

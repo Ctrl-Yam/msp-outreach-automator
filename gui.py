@@ -3,7 +3,7 @@ from tkinter import filedialog
 import customtkinter as ctk
 from main import run_outreach
 
-ctk.set_appearance_mode("dark")
+ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
 
 root = ctk.CTk()
@@ -75,22 +75,22 @@ frame = ctk.CTkFrame(root, corner_radius=10)
 frame.pack(padx=20, pady=20, fill="both", expand=True)
 
 # CustomTkinter Buttons
-select_csv_file_btn = ctk.CTkButton(frame, text="Select CSV File", command=select_csv_file)
+select_csv_file_btn = ctk.CTkButton(frame, text="Select CSV File", command=select_csv_file, fg_color="#1e1f21", hover_color="#14375e")
 select_csv_file_btn.pack(pady=5, padx=20)
 
-select_nmessage_file_btn = ctk.CTkButton(frame, text="Select Nmessage File", command=select_Nmessage_file)
+select_nmessage_file_btn = ctk.CTkButton(frame, text="Select Nmessage File", command=select_Nmessage_file, fg_color="#1e1f21", hover_color="#14375e")
 select_nmessage_file_btn.pack(pady=5, padx=20)
 
-select_smessage_file_btn = ctk.CTkButton(frame, text="Select Smessage File", command=select_Smessage_file)
+select_smessage_file_btn = ctk.CTkButton(frame, text="Select Smessage File", command=select_Smessage_file, fg_color="#1e1f21", hover_color="#14375e")
 select_smessage_file_btn.pack(pady=5, padx=20)
 
-select_nresume_file_btn = ctk.CTkButton(frame, text="Select Nresume File", command=select_Nresume_file)
+select_nresume_file_btn = ctk.CTkButton(frame, text="Select Nresume File", command=select_Nresume_file, fg_color="#1e1f21", hover_color="#14375e")
 select_nresume_file_btn.pack(pady=5, padx=20)
 
-select_sresume_file_btn = ctk.CTkButton(frame, text="Select Sresume File", command=select_Sresume_file)
+select_sresume_file_btn = ctk.CTkButton(frame, text="Select Sresume File", command=select_Sresume_file, fg_color="#1e1f21", hover_color="#14375e")
 select_sresume_file_btn.pack(pady=5, padx=20)
 
-send_btn = ctk.CTkButton(frame, text="Send Outreach!", command=run_engine, fg_color="#1f538d", hover_color="#14375e")
+send_btn = ctk.CTkButton(frame, text="Send Outreach!", command=run_engine, fg_color="#1e1f21", hover_color="#14375e")
 send_btn.pack(pady=15, padx=20)
 
 root.mainloop()
