@@ -10,7 +10,7 @@ root = ctk.CTk()
 root.title("MSP Outreach Automator v2")
 root.geometry("420x360")
 
-csv_file = ctk.StringVar(value="targets.csv")
+csv_file = ctk.StringVar(value="test.csv")
 nmessage_file_path = ctk.StringVar(value="nmessage.txt")
 smessage_file_path = ctk.StringVar(value="smessage.txt")
 nresume_file_path = ctk.StringVar(value="nresume.pdf")

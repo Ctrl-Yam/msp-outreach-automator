@@ -25,7 +25,7 @@ emailPass = os.environ.get("GMAIL_PASSWORD")
 
 N_message_file_path = "N_message.txt"
 S_message_file_path = "S_message.txt"
-recipients_file_path = "targets.csv"
+recipients_file_path = "test.csv"
 
 console = Console()
 
@@ -165,7 +165,7 @@ def run_outreach(
                     progress.advance(send_task)
 
                     if index < total - 1:
-                        delay_time = int(random.uniform(1, 2))
+                        delay_time = int(random.uniform(2, 10))
                         wait_with_countdown(progress, delay_task, delay_time)
         finally:
             if smtp is not None:
