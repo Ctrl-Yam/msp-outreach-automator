@@ -16,7 +16,6 @@ smessage_file_path = ctk.StringVar(value="S_message.txt")
 nresume_file_path = ctk.StringVar(value="N_resume.pdf")
 sresume_file_path = ctk.StringVar(value="S_resume.pdf")
 
-# File Selectors
 def select_csv_file():
     path = filedialog.askopenfilename(
         title="Select CSV File",
@@ -70,11 +69,9 @@ def run_engine():
         )
     threading.Thread(target=task, daemon=True).start()
 
-# Layout Container
 frame = ctk.CTkFrame(root, corner_radius=10)
 frame.pack(padx=20, pady=20, fill="both", expand=True)
 
-# CustomTkinter Buttons
 select_csv_file_btn = ctk.CTkButton(frame, text="Select CSV File", command=select_csv_file, fg_color="#1e1f21", hover_color="#14375e")
 select_csv_file_btn.pack(pady=5, padx=20)
 
